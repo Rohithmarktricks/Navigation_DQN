@@ -53,7 +53,9 @@ Reward:
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a purple banana.
 
 Installation and getting started with:
--## Dependencies
+
+## Dependencies
+-
 
 To set up your python environment to run the code in this repository, follow the instructions below.
 
