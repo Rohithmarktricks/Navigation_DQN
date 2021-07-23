@@ -1,3 +1,4 @@
+
 # Navigation DQN
 
 ## Deep Q-Network (DQN) Reinforcement Learning using PyTorch and Unity ML-Agents
@@ -12,10 +13,9 @@ Important files :
 - `train_agent.py:`Initializes and implements the training process for the DQN agent.
 - `test_agent.py:` Tests the the above trained DQN agent.
 
-Code has been adapted from code examples provided by Udacity Deep Reinforcement Learning Team, 2018.
+Code has been extracted from the code examples provided by Udacity Deep Reinforcement Learning Team, 2021.
 
 The repository also includes Mac/Linux/Windows version of a sample Unity environment, Banana for testing. The Unity application and testing environment was developed using ML-agents Beta v0.4. The version of the Banana environemnt employed for this project was developed for the Udacity Deep Reinforcement Learning Nanodegree course. For more information please refer to the following link: 
-
 
 
 The files in the python/. directory are the ML-agents toolkit files and the dependencies thare are required to run the Banana Environment. For more information about the Unity ML Agents Toolkit visit:
@@ -24,12 +24,10 @@ The files in the python/. directory are the ML-agents toolkit files and the depe
 For further details on DQN, Please refer to 
 
 
+
 ## Unity Environment - Banana 
 
 The example uses a modified version of the Unity ML-Agents Banana Collection example Environment. The environment includes a single agent, who can turn left or right or move forward or more backward. The agent's task is to collect yellow bananas (which yeild a reward of +1) that are scatters around in a compound, while avoiding picking up purple bananas (this penalises the agents by rewarding -1). For the version of Bananas employed here, it is considered that the agent has solved the environment when the average score over the last 100 episodes >= 14.
-
-
-
 
 
  Action Space
@@ -54,8 +52,7 @@ A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is
 
 Installation and getting started with:
 
-## Dependencies
--
+## Set up the Environment
 
 To set up your python environment to run the code in this repository, follow the instructions below.
 
@@ -90,9 +87,37 @@ python -m ipykernel install --user --name drlnd --display-name "drlnd"
 
 5. Before running code in a notebook, change the kernel to match the `drlnd` environment by using the drop-down `Kernel` menu. 
 
-![Kernel][image2]
+![Kernel selection in Jupyter Notebook](images/kernel_image_jupyter.png)
 
+## Download the Unity Environment:
+For this project, you don't need to install Unity. For the sake of easiness, a standalone application of the Banana's Unity Environment has already been built and can be used.
 
+Download the relevant environment zip file from one of the links below based on the operating system that you ar using.
 
+- Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
+- Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
+- Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
+- Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
+After you have downloaded the relevant zip file, navigate to where you downloaded and saved this GitHub repository and place the file in the main folder of the repository, then unzip (or decompress) the file.
 
+NOTE: The Banana environment is similar to, but not identical to the Banana Collector environment on the Unity ML-Agents GitHub page.
+
+## Training 
+6. In the `Navigation_DQN` folder, you may chose one of the below methods to run train the agent.
+- You may chose to open `Navigation.ipynb` jupyter notebook to experiment with the environment and tune agent performance.
+- Else, you can try running the below commands in the terminal to train/test agent in the Banana Environment:
+```bash
+conda activate drlnd
+cd Navigation_DQN
+Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe
+```
+![DQN-Agent that's been trained to collect Yellow Bananas](images/bananacollection.jpg)
+
+## Testing
+7. To test the trained agent, you may use the following command:
+```bash
+conda activate drlnd
+cd Navigation_DQN
+Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe
+```
