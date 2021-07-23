@@ -11,14 +11,15 @@ Further References: https://pytorch.org/tutorials/intermediate/reinforcement_q_l
 
 """
 
+# import the required modules
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 
-
 class QNetwork(nn.Module):
 
+    '''The main QNetwork class to implement the 3 hidden layers of Neural Network.'''
     def __init__(self, state_size, action_size, seed, layer1=128, layer2=64, layer3=32):
         super().__init__()
         self.seed = seed
@@ -29,6 +30,9 @@ class QNetwork(nn.Module):
 
 
     def forward(self, state):
+        '''This method will be called during forward pass of states in the Neural Network.
+        Relu activation has been used between two layers and final layer is just a linear layer,
+        suggesting that the approximation is based on Linear regression'''
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))

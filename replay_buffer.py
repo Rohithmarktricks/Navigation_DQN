@@ -28,14 +28,16 @@ from collections import deque, namedtuple
 
 
 def get_device():
+    '''To detect the device for training/testing i.e., CPU or GPU'''
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     return device
 
 
 class ReplayBuffer:
-
+    '''Replay Buffer class to store the agent experiences in the environment.'''
 
     def __init__(self, action_size, buffer_size, batch_size, seed):
+        '''This part of the code defines the action_size, state_size, memory of the Replay Buffer'''
         self.action_size = action_size
         self.memory = deque(maxlen=buffer_size)
         self.batch_size = batch_size
@@ -45,12 +47,13 @@ class ReplayBuffer:
 
 
     def add(self, state, action, reward, next_state, done):
+        '''Adds state, action, reward, next_state and done status to the memory pool.'''
         exp = self.experience(state, action, reward, next_state, done)
         self.memory.append(exp)
 
 
     def get_batch(self):
-        
+        '''This method randomly samples a batch of experiences from memory'''
         experiences = random.sample(self.memory, k=self.batch_size)
         states = torch.from_numpy(np.vstack([e.state for e in experiences if e is not None])).float().to(self.device)
         actions = torch.from_numpy(np.vstack([e.action for e in experiences if e is not None])).long().to(self.device)
