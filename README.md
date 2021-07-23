@@ -112,7 +112,7 @@ conda activate drlnd
 cd Navigation_DQN
 Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe
 ```
-![DQN-Agent that's been trained to collect Yellow Bananas](images/bananacollection.jpg)
+![DQN-Agent that's been trained to collect Yellow Bananas](images/bananacollection.gif)
 
 ## Testing
 7. To test the trained agent, you may use the following command:
