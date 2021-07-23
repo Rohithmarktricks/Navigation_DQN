@@ -76,8 +76,9 @@ def test_agent_in_env(env, agent, brain_name, test_episodes):
 def main():
 	location = sys.argv[1]
 	dqn_weights = sys.argv[2]
+	dqn_type = sys.argv[3]
 	env, brain_name, brain, action_size, state_size = get_envionment_info(location)
-	agent = get_agent(state_size=state_size, action_size=action_size)
+	agent = get_agent(state_size=state_size, action_size=action_size, dqn_type=dqn_type)
 	try:
 		agent.network.load_state_dict(torch.load(dqn_weights))
 		print("Loaded the weights successfully...")

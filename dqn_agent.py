@@ -138,7 +138,7 @@ class Agent():
             return random.choice(np.arange(self.action_size)).astype(np.int32)
 
 
-    def learn(self, experiences, gamma, DQN=True):
+    def learn(self, experiences, gamma):
         '''experiences is a batch of namedtuple and is used to train the target network
         
         Input Parameters:
@@ -152,7 +152,7 @@ class Agent():
         qsa = self.network(states).gather(1, actions)
 
         if (self.dqn_type == 'DDQN'):
-            '''Double DQN is a special case, where the actions are taken from the network itself'''
+            '''Double DQN is a special case, where the action that yeilds max reward is taken from the network itself'''
             qsa_prime_actions = self.network(next_states).detach().max(1)[1].unsqueeze(1)
             qsa_prime_targets = self.target_network(next_states)[qsa_prime_actions].unsqueeze(1)
         else:

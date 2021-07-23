@@ -53,11 +53,12 @@ def get_envionment_info(location):
 
 def get_agent(state_size, action_size, dqn_type='DQN'):
     '''Initializes and returns the agent'''
-    agent = Agent(state_size=state_size, action_size=action_size, dqn_type='DQN')
+    agent = Agent(state_size=state_size, action_size=action_size, dqn_type=dqn_type)
+    print(f"Agent has been initialized with dqn_type as {dqn_type}...")
     return agent
 
 
-def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon, num_episodes):
+def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon, dqn_type,num_episodes):
     '''Trains the agent
         
         Input parameters:
@@ -137,16 +138,18 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
         # Check to see if the task is solved (i.e,. avearge_score > required_score). 
         # If yes, save the network weights and scores and end training.
         if average_score >= required_score:
-            print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode, average_score))
+            print('\n{} Agent has learnt to solve the environment in {:d} episodes!\tAverage Score: {:.2f}'.format(dqn_type,i_episode, average_score))
 
             #  To save the weights of the Neural network
             start_time = time.strftime("%Y%m%d-%H%M%S")
-            network_name = "DQN_model_weights_"+start_time + ".pth"
+            network_name = dqn_type+"model_weights_"+start_time + ".pth"
             torch.save(agent.network.state_dict(), network_name)
+            print(f"Saved the {dqn_type} model weights at {network_name}")
 
             # To save the recorded Scores data.
-            scores_filename = "DQN_agent_scores_"+start_time + ".csv"
+            scores_filename = dqn_type+"_agent_scores_"+start_time + ".csv"
             np.savetxt(scores_filename, scores, delimiter=",")
+            print(f"Scores of the training process for {dqn_type} model has been stored at {scores_filename}")
             break
 
     # close the environment after all the episodes.
@@ -161,14 +164,15 @@ def main():
     '''Main function that takes the location/path of the environment'''
     location = sys.argv[1]
 
+    dqn_type = sys.argv[2]
     # gets the environment information.
     env, brain_name, brain, action_size, state_size = get_envionment_info(location)
 
     # Initializes the agent with state_size, and action_size of the environment.
-    agent = get_agent(state_size, action_size)
+    agent = get_agent(state_size, action_size, dqn_type=dqn_type)
 
     # Train the agent.
-    train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon, num_episodes)
+    train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon, dqn_type, num_episodes)
 
 
 if __name__ == "__main__":
