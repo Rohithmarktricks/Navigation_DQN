@@ -110,7 +110,7 @@ NOTE: The Banana environment is similar to, but not identical to the Banana Coll
 ```bash
 conda activate drlnd
 cd Navigation_DQN
-Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe
+Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe DQN
 ```
 ![DQN-Agent that's been trained to collect Yellow Bananas](images/bananacollection.gif)
 
@@ -119,5 +119,5 @@ Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe
 ```bash
 conda activate drlnd
 cd Navigation_DQN
-Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe
+Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe DQN
 ```
