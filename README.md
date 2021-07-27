@@ -1,4 +1,5 @@
 
+
 # Navigation DQN
 
 ## Deep Q-Network (DQN) Reinforcement Learning using PyTorch and Unity ML-Agents
@@ -121,3 +122,20 @@ conda activate drlnd
 cd Navigation_DQN
 Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe DQN
 ```
+
+## Training Performance
+The agent has been trained over 15 times, and on average the agent has taken around 430+ episodes to solve the Unity ML Banana Environment i.e., to score the atleast +13 average reward over 100 episodes. However, the least number of episodes required to solve the environment over was 400 episodes).
+
+![sample plot of DQN agent Epochs vs Average Score](images/Average_Score.jpg)
+
+## Sample Testing (Jupyter Notebook)
+To test the Unity ML environment and the agent, Jupyter Notebook `Navigation.ipynb` has been provided. You can quickly change the code/ tweak few hyperparameters to get started.
+
+## Future Work:
+- Duelling DQN can be explored to check if agents performance can be improved.
+- At the same time, the existing DQN, Double DQN can be used to train pixel based data (raw images as states/inputs to the deep(covolutional) neural network. 
+
+## References:
+1. https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html
+2. https://unnatsingh.medium.com/deep-q-network-with-pytorch-d1ca6f40bfda
+3. https://ai.googleblog.com/2015/02/from-pixels-to-actions-human-level.html

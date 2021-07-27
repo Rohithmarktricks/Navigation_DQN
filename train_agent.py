@@ -37,7 +37,7 @@ scores_average_window=100
 required_score = 14
 
 
-def get_envionment_info(location):
+def get_environment_info(location):
     '''To get the information about the environment from the given location of Unity ML agent'''
     env = UnityEnvironment(location)
     # We check for the first brain available, and set it as the default brain, we will be controlling using Python API.
@@ -51,7 +51,7 @@ def get_envionment_info(location):
     return (env, brain_name, brain, action_size, state_size)
 
 
-def get_agent(state_size, action_size, dqn_type='DQN'):
+def get_agent(state_size, action_size, dqn_type):
     '''Initializes and returns the agent'''
     agent = Agent(state_size=state_size, action_size=action_size, dqn_type=dqn_type)
     print(f"Agent has been initialized with dqn_type as {dqn_type}...")
@@ -88,7 +88,7 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
 
 
     for i_episode in range(1, num_episodes+1):
-        print(f"training episode: {i_episode}")
+        # print(f"training episode: {i_episode}")
         env_info = env.reset(train_mode=True)[brain_name]
 
         # initial state
@@ -129,11 +129,12 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
         # epsilon value is being reduced as the agent is learning and action space can exploited.
         epsilon = max(epsilon_min, epsilon_decay*epsilon)
 
-        print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, average_score), end="")
+        print(f"Episode: {i_episode} , Average Score: {round(average_score, 4)}")
 
         # Print average score every scores_average_window episodes
         if i_episode % scores_average_window == 0:
-            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, average_score))
+            print(f"Average score after {i_episode} episode is {round(average_score, 4)}")
+            print('------------------------------------------------------------')
         
         # Check to see if the task is solved (i.e,. avearge_score > required_score). 
         # If yes, save the network weights and scores and end training.
@@ -142,9 +143,9 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
 
             #  To save the weights of the Neural network
             start_time = time.strftime("%Y%m%d-%H%M%S")
-            network_name = dqn_type+"model_weights_"+start_time + ".pth"
-            torch.save(agent.network.state_dict(), network_name)
-            print(f"Saved the {dqn_type} model weights at {network_name}")
+            dqn_model_weights = dqn_type+"model_weights_"+start_time + ".pth"
+            torch.save(agent.network.state_dict(), dqn_model_weights)
+            print(f"Saved the {dqn_type} model weights at {dqn_model_weights}")
 
             # To save the recorded Scores data.
             scores_filename = dqn_type+"_agent_scores_"+start_time + ".csv"
@@ -166,10 +167,11 @@ def main():
 
     dqn_type = sys.argv[2]
     # gets the environment information.
-    env, brain_name, brain, action_size, state_size = get_envionment_info(location)
+    env, brain_name, brain, action_size, state_size = get_environment_info(location)
 
+    print(f"The type of Deep Q Network chosen in {dqn_type}")
     # Initializes the agent with state_size, and action_size of the environment.
-    agent = get_agent(state_size, action_size, dqn_type=dqn_type)
+    agent = get_agent(state_size, action_size, dqn_type)
 
     # Train the agent.
     train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon, dqn_type, num_episodes)

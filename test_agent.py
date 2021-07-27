@@ -16,7 +16,7 @@ import sys
 import numpy as np
 from dqn_agent import Agent
 from unityagents import UnityEnvironment
-from train_agent import get_envionment_info, get_agent
+from train_agent import get_environment_info, get_agent
 
 
 # Number of episodes to test.
@@ -77,7 +77,7 @@ def main():
 	location = sys.argv[1]
 	dqn_weights = sys.argv[2]
 	dqn_type = sys.argv[3]
-	env, brain_name, brain, action_size, state_size = get_envionment_info(location)
+	env, brain_name, brain, action_size, state_size = get_environment_info(location)
 	agent = get_agent(state_size=state_size, action_size=action_size, dqn_type=dqn_type)
 	try:
 		agent.network.load_state_dict(torch.load(dqn_weights))
