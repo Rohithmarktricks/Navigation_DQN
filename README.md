@@ -22,9 +22,6 @@ The repository also includes Mac/Linux/Windows version of a sample Unity environ
 The files in the python/. directory are the ML-agents toolkit files and the dependencies thare are required to run the Banana Environment. For more information about the Unity ML Agents Toolkit visit:
 
 
-For further details on DQN, Please refer to 
-
-
 
 ## Unity Environment - Banana 
 
@@ -126,7 +123,7 @@ Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe DQN
 ## Training Performance
 The agent has been trained over 15 times, and on average the agent has taken around 430+ episodes to solve the Unity ML Banana Environment i.e., to score the atleast +13 average reward over 100 episodes. However, the least number of episodes required to solve the environment over was 400 episodes).
 
-![sample plot of DQN agent Epochs vs Average Score](images/Average_Score.jpg)
+![sample plot of DQN agent Epochs vs Average Score](images/Average_score.jpg)
 
 ## Sample Testing (Jupyter Notebook)
 To test the Unity ML environment and the agent, Jupyter Notebook `Navigation.ipynb` has been provided. You can quickly change the code/ tweak few hyperparameters to get started.
