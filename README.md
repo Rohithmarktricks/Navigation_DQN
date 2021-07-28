@@ -1,5 +1,6 @@
 
 
+
 # Navigation DQN
 
 ## Deep Q-Network (DQN) Reinforcement Learning using PyTorch and Unity ML-Agents
@@ -75,12 +76,21 @@ To set up your python environment to run the code in this repository, follow the
 ```bash
 git clone https://github.com/Rohithmarktricks/Navigation_DQN.git
 cd Navigation_DQN/python
-pip install .
+(drlnd) C:/../Navigation_DQN/python >pip install .
 ```
+
+ - For __Windows 10__: This project has been developed with python v3.6 and PyTorch v0.4.0. You might see the `pytorch==0.4.0`. Incase, if you have faced any issues related to PyTorch related to pytorch installation. Follow the below steps, before proceeding to step 5
+ - remove `pytorch==0.4.0` from python/requirements.txt and from command prompt,
+ ```bash
+(drlnd) C:/../Navigation_DQN >conda install pytorch=0.4.0 -c pytorch
+(drlnd) C:/../Navigation_DQN > cd python
+(drlnd) C:/../Navigation_DQN/python > pip install .
+```
+
 
 4. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  
 ```bash
-python -m ipykernel install --user --name drlnd --display-name "drlnd"
+(drlnd) C:/../Navigation_DQN >python -m ipykernel install --user --name drlnd --display-name "drlnd"
 ```
 
 5. Before running code in a notebook, change the kernel to match the `drlnd` environment by using the drop-down `Kernel` menu. 
@@ -136,3 +146,4 @@ To test the Unity ML environment and the agent, Jupyter Notebook `Navigation.ipy
 1. https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html
 2. https://unnatsingh.medium.com/deep-q-network-with-pytorch-d1ca6f40bfda
 3. https://ai.googleblog.com/2015/02/from-pixels-to-actions-human-level.html
+4. Ravichandiran, Sudharsan. Deep Reinforcement Learning with Python: Master classic RL, deep RL, distributional RL, inverse RL, and more with OpenAI Gym and TensorFlow, 2nd Edition. Packt Publishing.
