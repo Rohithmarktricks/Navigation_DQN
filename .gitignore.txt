@@ -1,2 +1,0 @@
-# will be ignored by Git
-Banana_Windows_x86_64/

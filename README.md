@@ -7,7 +7,7 @@
 
 A  simple project to show how to implement vector based DQN using Python, PyTorch, and a ML-Agents environment. This project has been done as a part of Udacity Nanodegree in Deep Reinforcement Learning (DRL)
 
-Important files :
+Important files and folders :
 - 
 - `dqn_agent.py:` Contains the source code of DQN agent implementation.
 - `replay_buffer.py:` Replay buffer implementaion for the dqn-agent to learn the best actions.
@@ -127,7 +127,7 @@ Navigation_DQN >python train_agent.py Banana_Windows_x86_64/Banana.exe DQN
 ```bash
 conda activate drlnd
 cd Navigation_DQN
-Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe DQN
+Navigation_DQN >python test_agent.py Banana_Windows_x86_64/Banana.exe <path to saved models weights .pth file> DQN
 ```
 
 ## Training Performance

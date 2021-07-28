@@ -17,6 +17,7 @@ import numpy as np
 from dqn_agent import Agent
 from unityagents import UnityEnvironment
 from train_agent import get_environment_info, get_agent
+import argparse
 
 
 # Number of episodes to test.
@@ -74,9 +75,17 @@ def test_agent_in_env(env, agent, brain_name, test_episodes):
 
 
 def main():
-	location = sys.argv[1]
-	dqn_weights = sys.argv[2]
-	dqn_type = sys.argv[3]
+	parser = argparse.ArgumentParser(description='Testing the agent. sample cmd: python test_agent.py <location of Banana.exe> <ocation of *.pth weights file> DQN')
+	parser.add_argument('location', type=str, help='Location of the Banana.exe for testing')
+	parser.add_argument('dqn_weights', type=str, help='Location of the DQN weights files, *.pth format')
+	parser.add_argument('dqn_type', type=str, help='Type of DQN: DQN or DDQN')
+	# parase arguments
+	namespace = parser.parse_args()
+	
+	# get the arguments
+	location = namespace.location
+	dqn_weights = namespace.dqn_weights
+	dqn_type = namespace.dqn_type
 	env, brain_name, brain, action_size, state_size = get_environment_info(location)
 	agent = get_agent(state_size=state_size, action_size=action_size, dqn_type=dqn_type)
 	try:

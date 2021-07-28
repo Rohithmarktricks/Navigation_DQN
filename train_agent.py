@@ -25,6 +25,7 @@ from dqn_agent import *
 from model import *
 from unityagents import UnityEnvironment
 import sys
+import argparse
 
 
 # training hyperparameters
@@ -143,12 +144,12 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
 
             #  To save the weights of the Neural network
             start_time = time.strftime("%Y%m%d-%H%M%S")
-            dqn_model_weights = dqn_type+"model_weights_"+start_time + ".pth"
+            dqn_model_weights = "saved_models/"+dqn_type+"model_weights_"+start_time + ".pth"
             torch.save(agent.network.state_dict(), dqn_model_weights)
             print(f"Saved the {dqn_type} model weights at {dqn_model_weights}")
 
             # To save the recorded Scores data.
-            scores_filename = dqn_type+"_agent_scores_"+start_time + ".csv"
+            scores_filename = "scores/"+dqn_type+"_agent_scores_"+start_time + ".csv"
             np.savetxt(scores_filename, scores, delimiter=",")
             print(f"Scores of the training process for {dqn_type} model has been stored at {scores_filename}")
             break
@@ -163,9 +164,15 @@ def train_agent(env, brain_name, brain, action_size, state_size, agent, epsilon,
 
 def main():
     '''Main function that takes the location/path of the environment'''
-    location = sys.argv[1]
+    parser = argparse.ArgumentParser(description="Train DQN Agent sample cmd: python train_agent.py <path to Banana.exe> DQN")
+    parser.add_argument('location', type=str, help='Input dir for Banana.exe location')
+    parser.add_argument('dqn_type', type=str, help='type of DQN agent to train: DQN or DDQN')
+    # get the namespace
+    namespace = parser.parse_args()
 
-    dqn_type = sys.argv[2]
+    # get the args
+    location = namespace.location
+    dqn_type = namespace.dqn_type
     # gets the environment information.
     env, brain_name, brain, action_size, state_size = get_environment_info(location)
 
