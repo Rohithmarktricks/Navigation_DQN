@@ -70,7 +70,11 @@ class Agent():
     def __init__(self, state_size, action_size, dqn_type='DQN', replay_buffer_size=1e5, batch_size=64, gamma=0.99,
         learning_rate=1e-3, target_tau=2e-3, update_rate=4, seed=0):
 
-        '''Parameters:
+        '''
+            The __init__ method get called automatically when object is initialized.
+
+            Input Parameters:
+            =================
             state_size: dimension of the state (37)
             action_size: 4 possible actions
             dqn_type : DQN/DDQN 
@@ -105,8 +109,9 @@ class Agent():
     def step(self, state, action, reward, next_state, done):
         '''This method saves the experience of the agent in the replay memory,
         and target network learns after every 4 steps.
+        
         Input Parameters:
-
+        =================
         state: Present state encountered by the agent in the environment.
         action: action that has been suggested by the network(DQN)
         reward: Discounted reward
@@ -142,6 +147,7 @@ class Agent():
         '''experiences is a batch of namedtuple and is used to train the target network
         
         Input Parameters:
+        =================
         experiences is a tuple of (states, actions, rewards, next_states, dones).
         This tuple of states, actions would be used to learn and update the weights matrices of the main and target network. 
 
@@ -176,8 +182,8 @@ class Agent():
         """Rule of Soft update model parameters.
         θ_target = τ*θ_local + (1 - τ)*θ_target
 
-        Params
-        ======
+        Input Parameters:
+        =================
             local_model (PyTorch model): weights will be copied from
             target_model (PyTorch model): weights will be copied to
             tau (float): interpolation parameter 
