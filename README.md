@@ -1,11 +1,39 @@
 
 
 
+
 # Navigation DQN
 
 ## Deep Q-Network (DQN) Reinforcement Learning using PyTorch and Unity ML-Agents
 
 A  simple project to show how to implement vector based DQN using Python, PyTorch, and a ML-Agents environment. This project has been done as a part of Udacity Nanodegree in Deep Reinforcement Learning (DRL)
+
+## Project Structure:
+```
+├───.ipynb_checkpoints
+├───images
+├───python
+│   ├───communicator_objects
+│   ├───curricula
+│   ├───tests
+│   ├───unityagents
+│   └───unitytrainers
+│       ├───bc
+│       └───ppo
+│ Banana_Windows_x86_64.zip
+│ dqn_agent.py
+│ model.py
+│ Navigation.ipynb
+│ README.md
+│ replay_buffer.py
+│ Report.pdf
+│ test_agent.py
+│ train_agent.py
+│ unity-environment.log
+├───saved_models
+├───scores
+└───__pycache__
+```
 
 Important files and folders :
 - 
@@ -14,13 +42,15 @@ Important files and folders :
 - `model.py:` Contains the Deep Neural Network implementation (PyTorch) for vector based DQN learning.
 - `train_agent.py:`Initializes and implements the training process for the DQN agent.
 - `test_agent.py:` Tests the the above trained DQN agent.
+- `saved_models:` Folder that contains the weigts of trained DQN (.pth format)
+- `scores:` Folder that contains the scores/rewards earned by the DQN agent (.csv format)
+- `python:` The files in this directory are the ML-agents toolkit files and the dependencies thare are required to run the Banana Environment.
 
 Code has been extracted from the code examples provided by Udacity Deep Reinforcement Learning Team, 2021.
 
-The repository also includes Mac/Linux/Windows version of a sample Unity environment, Banana for testing. The Unity application and testing environment was developed using ML-agents Beta v0.4. The version of the Banana environemnt employed for this project was developed for the Udacity Deep Reinforcement Learning Nanodegree course. For more information please refer to the following link: 
+The repository also includes Mac/Linux/Windows version of a sample Unity environment, Banana for testing. The Unity application and testing environment was developed using ML-agents Beta v0.4. The version of the Banana environemnt employed for this project was developed for the Udacity Deep Reinforcement Learning Nanodegree course. For more information please refer to the following link:  [Udacity Deep Reinforcement Learning](https://www.udacity.com/courses/deep-reinforcement-learning-nanodegree--nd893)
 
-
-The files in the python/. directory are the ML-agents toolkit files and the dependencies thare are required to run the Banana Environment. For more information about the Unity ML Agents Toolkit visit:
+ For more information about the Unity ML Agents Toolkit visit:  [Unity ML Toolkit](https://github.com/Unity-Technologies/ml-agents)
 
 
 
@@ -51,7 +81,7 @@ A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is
 
 Installation and getting started with:
 
-## Set up the Environment
+## Set up the Environment (adapted from Udacity DRL [GitHub Repo](https://github.com/udacity/deep-reinforcement-learning) )
 
 To set up your python environment to run the code in this repository, follow the instructions below.
 
@@ -78,7 +108,6 @@ git clone https://github.com/Rohithmarktricks/Navigation_DQN.git
 cd Navigation_DQN/python
 (drlnd) C:/../Navigation_DQN/python >pip install .
 ```
-
  - For __Windows 10__: This project has been developed with python v3.6 and PyTorch v0.4.0. You might see the `pytorch==0.4.0`. Incase, if you have faced any issues related to PyTorch related to pytorch installation. Follow the below steps, before proceeding to step 5
  - remove `pytorch==0.4.0` from python/requirements.txt and from command prompt,
  ```bash
